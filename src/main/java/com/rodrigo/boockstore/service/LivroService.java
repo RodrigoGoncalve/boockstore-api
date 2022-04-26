@@ -29,4 +29,17 @@ public class LivroService {
 		categoriaService.findById(id_cat);
 		return livroRepository.findallByCategoria(id_cat);
 	}
+
+	public Livro update(Integer id, Livro obj) {	
+		Livro objNew = findById(id);
+		updateData(objNew, obj);
+	
+		return livroRepository.save(objNew);
+	}
+
+	private void updateData(Livro objNew, Livro obj) {
+		objNew.setTitulo(obj.getTitulo());
+		objNew.setNomeAutor(obj.getNomeAutor());
+		objNew.setTexto(obj.getTexto());
+	}
 }
