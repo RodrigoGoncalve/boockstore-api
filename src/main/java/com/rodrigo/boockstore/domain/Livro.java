@@ -17,7 +17,8 @@ public class Livro implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String titulo;
 	private String nomeAutor;
 	private String texto;
