@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rodrigo.boockstore.domain.Categoria;
 import com.rodrigo.boockstore.domain.Livro;
 import com.rodrigo.boockstore.repositories.LivroRepository;
 import com.rodrigo.boockstore.service.exceptions.ObjectNoutFoundException;
@@ -41,5 +42,12 @@ public class LivroService {
 		objNew.setTitulo(obj.getTitulo());
 		objNew.setNomeAutor(obj.getNomeAutor());
 		objNew.setTexto(obj.getTexto());
+	}
+
+	public Livro create(Integer id_cat, Livro obj) {
+		obj.setId(null);
+		Categoria cat = categoriaService.findById(id_cat);
+		obj.setCategoria(cat);
+		return livroRepository.save(obj);
 	}
 }
